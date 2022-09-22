@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./style.css";
+import styles from "./styles.module.css";
 
 export const SdkComponent = ({ id }) => {
   const [data, setData] = useState([]);

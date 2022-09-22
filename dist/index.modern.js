@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-var styles = {"body":"_style__body__2ZVoV"};
+var styles = {"body":"_styles-module__body__2mo3X"};
 
 const SdkComponent = ({
   id

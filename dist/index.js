@@ -3,7 +3,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var React = require('react');
 var React__default = _interopDefault(React);
 
-var styles = {"body":"_style__body__2ZVoV"};
+var styles = {"body":"_styles-module__body__2mo3X"};
 
 var SdkComponent = function SdkComponent(_ref) {
   var id = _ref.id;
