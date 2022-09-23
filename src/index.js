@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 
-export const SdkComponent = ({ id, isButtonVisible = false }) => {
+export const SdkComponent = ({ id, isButtonVisible }) => {
   const [data, setData] = useState([]);
-  const [showHelp, setShowHelp] = useState(isButtonVisible ? isButtonVisible : false);
+  // let buttonVisibility = isButtonVisible ? isButtonVisible : false;
+  const [showHelp, setShowHelp] = useState(false);
 
-  const data1 = ["List 1", "List 2", "List 3"];
   useEffect(() => {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "https://reqres.in/api/products", true);
@@ -17,16 +17,16 @@ export const SdkComponent = ({ id, isButtonVisible = false }) => {
   }, []);
   return (
     <div className={styles.body}>
-      <h1>React SDK App</h1>
-      <ul>
-        {data?.map((val) => (
-          <li>{val.name}</li>
-        ))}
-      </ul>
-      <div>Id from props: {id}</div>
       {showHelp && (
         <div
-          style={{ position: "absolute", top: 0, bottom: 0, right: 0, left: 0 }}
+          style={{
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            right: 0,
+            left: 0,
+            backgroundColor: "white",
+          }}
         >
           <iframe
             frameborder="0"
@@ -39,9 +39,7 @@ export const SdkComponent = ({ id, isButtonVisible = false }) => {
             src="https://chatbot-demo-95e31.web.app"
           ></iframe>
           <div
-            onClick={() => 
-              setShowHelp(false)
-            }
+            onClick={() => setShowHelp(false)}
             style={{
               position: "absolute",
               top: 30,
@@ -54,6 +52,20 @@ export const SdkComponent = ({ id, isButtonVisible = false }) => {
           >
             close
           </div>
+        </div>
+      )}
+      <div>
+        <h1>React SDK App</h1>
+        <ul>
+          {data?.map((val, index) => (
+            <li key={index}>{val.name}</li>
+          ))}
+        </ul>
+        <div>Id from props: {id}</div>
+      </div>
+      {isButtonVisible && (
+        <div style={{ paddingTop: 30 }}>
+          <button onClick={() => setShowHelp(true)}>show help</button>
         </div>
       )}
     </div>

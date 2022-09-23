@@ -4,16 +4,16 @@ var styles = {"body":"_2mo3X"};
 
 var SdkComponent = function SdkComponent(_ref) {
   var id = _ref.id,
-      _ref$isButtonVisible = _ref.isButtonVisible,
-      isButtonVisible = _ref$isButtonVisible === void 0 ? false : _ref$isButtonVisible;
+      isButtonVisible = _ref.isButtonVisible;
 
   var _useState = useState([]),
       data = _useState[0],
       setData = _useState[1];
 
-  var _useState2 = useState(isButtonVisible ? isButtonVisible : false),
+  var _useState2 = useState(false),
       showHelp = _useState2[0],
       setShowHelp = _useState2[1];
+
   useEffect(function () {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "https://reqres.in/api/products", true);
@@ -29,15 +29,14 @@ var SdkComponent = function SdkComponent(_ref) {
   }, []);
   return /*#__PURE__*/React.createElement("div", {
     className: styles.body
-  }, /*#__PURE__*/React.createElement("h1", null, "React SDK App"), /*#__PURE__*/React.createElement("ul", null, data === null || data === void 0 ? void 0 : data.map(function (val) {
-    return /*#__PURE__*/React.createElement("li", null, val.name);
-  })), /*#__PURE__*/React.createElement("div", null, "Id from props: ", id), showHelp && /*#__PURE__*/React.createElement("div", {
+  }, showHelp && /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       top: 0,
       bottom: 0,
       right: 0,
-      left: 0
+      left: 0,
+      backgroundColor: "white"
     }
   }, /*#__PURE__*/React.createElement("iframe", {
     frameborder: "0",
@@ -60,7 +59,19 @@ var SdkComponent = function SdkComponent(_ref) {
       width: 100,
       height: 50
     }
-  }, "close")));
+  }, "close")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "React SDK App"), /*#__PURE__*/React.createElement("ul", null, data === null || data === void 0 ? void 0 : data.map(function (val, index) {
+    return /*#__PURE__*/React.createElement("li", {
+      key: index
+    }, val.name);
+  })), /*#__PURE__*/React.createElement("div", null, "Id from props: ", id)), isButtonVisible && /*#__PURE__*/React.createElement("div", {
+    style: {
+      paddingTop: 30
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return setShowHelp(true);
+    }
+  }, "show help")));
 };
 
 export { SdkComponent };
